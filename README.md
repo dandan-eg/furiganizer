@@ -1,23 +1,41 @@
+---
+layout: default
+title: Furiganizer
+---
+
 # Furiganizer
 
 Script Google Apps Script (Google Docs) qui ajoute les furigana entre parenthèses sur **la sélection** :
 
 ```
-昨日映画を見ました  →  昨日(きのう)映画(えいが)を見(み)ました
+昨日映画を見ました  →  昨日（きのう）映画（えいが）を見（み）ました
 ```
 
-## Installation
+## Installation (add-on, disponible sur tous tes documents)
 
-1. Ouvre un Google Doc → **Extensions > Apps Script**.
-2. Colle le contenu de `Code.gs` dans l'éditeur.
-3. (Optionnel) **Paramètres du projet > Afficher le fichier manifeste**, puis remplace par `appsscript.json`.
-4. Recharge le document : le menu **ふりがな** apparaît.
+1. Ouvre **un** Google Doc (il servira de projet de développement) → **Extensions > Apps Script**.
+2. Renomme le projet **Furiganizer** (c'est ce nom qui s'affichera dans le menu Extensions).
+3. Colle le contenu de `Code.gs` dans l'éditeur.
+4. **Paramètres du projet > Afficher le fichier manifeste `appsscript.json`**, puis remplace-le par celui du dépôt.
+5. **Déployer > Tester les déploiements** → *Sélectionner le type : module complémentaire Docs* → **Installer**.
+6. Ouvre n'importe quel Google Doc : **Extensions > Furiganizer > ふりがなを付ける**.
 
-Aucune clé d'API : le script est directement partageable (copie du Doc, ou copier-coller du script).
+Le déploiement de test reste installé sur ton compte : pas besoin de validation Google, et le menu suit tous tes documents.
+
+Aucune clé d'API.
+
+## Publication (pour tout le monde)
+
+Le déploiement de test ci-dessus ne vaut que pour ton compte. Pour que n'importe qui puisse
+installer Furiganizer depuis le Google Workspace Marketplace, voir **[PUBLISHING.md](PUBLISHING.md)** :
+projet Cloud, écran de consentement OAuth, fiche du store, soumission à la revue Google.
+
+Documents requis par la revue, déjà rédigés : [PRIVACY.md](PRIVACY.md) et [TERMS.md](TERMS.md)
+(à publier sous des URL `https://` stables, par ex. via GitHub Pages).
 
 ## Utilisation
 
-Sélectionne du texte, puis **ふりがな > ふりがなを付ける**.
+Sélectionne du texte, puis **Extensions > Furiganizer > ふりがなを付ける**.
 
 ## Notes
 

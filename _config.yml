@@ -1,0 +1,11 @@
+theme: jekyll-theme-minimal
+title: Furiganizer
+description: Module complémentaire Google Docs pour ajouter les furigana au texte japonais
+lang: fr
+
+# Fichiers de travail : pas de raison de les publier.
+exclude:
+  - PUBLISHING.md
+  - LIMITATIONS.md
+  - Code.gs
+  - appsscript.json
