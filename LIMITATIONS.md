@@ -1,3 +1,8 @@
+---
+layout: default
+title: Limites connues
+---
+
 # Limitations connues
 
 ## Dépendance à un service tiers

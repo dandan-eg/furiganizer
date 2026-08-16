@@ -6,6 +6,5 @@ lang: fr
 # Fichiers de travail : pas de raison de les publier.
 exclude:
   - PUBLISHING.md
-  - LIMITATIONS.md
   - Code.gs
   - appsscript.json
