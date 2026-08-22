@@ -1,61 +1,61 @@
 ---
 layout: default
-title: Politique de confidentialité
+title: Privacy Policy
 ---
 
-# Politique de confidentialité — Furiganizer
+# Privacy Policy — Furiganizer
 
-*Dernière mise à jour : 16 août 2026*
+*Last updated: August 16, 2026*
 
-Furiganizer est un module complémentaire Google Docs qui ajoute les furigana au texte
-sélectionné. Cette page décrit les données traitées.
+Furiganizer is a Google Docs add-on that adds furigana to selected text.
+This page describes the data processed.
 
-## Données traitées
+## Data Processing
 
-Lorsque tu lances **Extensions > Furiganizer > ふりがなを付ける**, le module lit **uniquement
-le texte que tu as sélectionné** dans le document ouvert, et le remplace par sa version annotée.
+When you run **Extensions > Furiganizer > ふりがなを付ける**, the add-on reads **only
+the text you have selected** in the open document, and replaces it with its annotated version.
 
-Furiganizer ne lit pas le reste du document, n'accède à aucun autre fichier de ton Drive, et
-n'accède à aucun document lorsqu'il n'est pas explicitement lancé. C'est garanti techniquement
-par le champ d'autorisation utilisé, `documents.currentonly`, qui limite l'accès au seul
-document ouvert.
+Furiganizer does not read the rest of the document, does not access any other files in your Drive, and
+does not access any document when not explicitly launched. This is technically guaranteed
+by the authorization scope used, `documents.currentonly`, which limits access to only the
+open document.
 
-## Transmission à un service tiers
+## Transmission to a Third Party
 
-Le texte sélectionné est envoyé, en HTTPS, à l'API publique **Mikann**
-(`https://fast-mikann-api.vercel.app`, hébergée sur Vercel) qui calcule les lectures et renvoie
-le résultat. Ce service est développé par un tiers
-([NoHeartPen/fast-mikann-api](https://github.com/NoHeartPen/fast-mikann-api)) et n'est pas
-contrôlé par l'auteur de Furiganizer.
+The selected text is sent via HTTPS to the public **Mikann** API
+(`https://fast-mikann-api.vercel.app`, hosted on Vercel) which calculates the readings and returns
+the result. This service is developed by a third party
+([NoHeartPen/fast-mikann-api](https://github.com/NoHeartPen/fast-mikann-api)) and is not
+controlled by the author of Furiganizer.
 
-**N'utilise pas Furiganizer sur du texte confidentiel.**
+**Do not use Furiganizer on confidential text.**
 
-## Conservation
+## Data Retention
 
-Furiganizer ne stocke aucune donnée : pas de base de données, pas de journaux applicatifs,
-pas de cookies, pas de compte. Le texte transite en mémoire le temps de l'appel, puis disparaît.
-L'auteur n'a accès à aucun contenu de tes documents.
+Furiganizer stores no data: no database, no application logs,
+no cookies, no account. Text passes through memory during the call and then disappears.
+The author has no access to any content in your documents.
 
-Les journaux techniques d'exécution (erreurs) sont ceux fournis par la plateforme Google Apps
-Script et ne contiennent pas le contenu des documents.
+Technical execution logs (errors) are those provided by the Google Apps
+Script platform and do not contain document content.
 
-## Aucun partage, aucune publicité
+## No Sharing, No Advertising
 
-Aucune donnée n'est vendue, louée, partagée à des fins commerciales, ni utilisée pour de la
-publicité ou de l'entraînement de modèles.
+No data is sold, rented, shared for commercial purposes, or used for
+advertising or model training.
 
-## Utilisation limitée
+## Limited Use
 
-L'utilisation des données reçues des API Google respecte la
-[politique Google API Services User Data](https://developers.google.com/terms/api-services-user-data-policy),
-y compris ses exigences d'utilisation limitée.
+The use of data received from Google APIs complies with the
+[Google API Services User Data policy](https://developers.google.com/terms/api-services-user-data-policy),
+including its limited use requirements.
 
-## Suppression
+## Deletion
 
-Puisque rien n'est conservé, il n'y a rien à supprimer. Tu peux retirer l'accès à tout moment
-depuis [myaccount.google.com/permissions](https://myaccount.google.com/permissions) ou désinstaller
-le module via **Extensions > Modules complémentaires > Gérer les modules complémentaires**.
+Since nothing is retained, there is nothing to delete. You can revoke access at any time
+from [myaccount.google.com/permissions](https://myaccount.google.com/permissions) or uninstall
+the add-on via **Extensions > Add-ons > Manage add-ons**.
 
 ## Contact
 
-Pour toute question : ouvrir une issue sur le dépôt du projet.
+For any questions: open an issue on the project repository.

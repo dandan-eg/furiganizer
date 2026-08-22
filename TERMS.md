@@ -1,59 +1,58 @@
 ---
 layout: default
-title: Conditions d'utilisation
+title: Terms of Service
 ---
 
-# Conditions d'utilisation — Furiganizer
+# Terms of Service — Furiganizer
 
-*Dernière mise à jour : 16 août 2026*
+*Last updated: August 16, 2026*
 
 ## Service
 
-Furiganizer est un module complémentaire Google Docs, gratuit et open source, qui ajoute les
-furigana entre parenthèses au texte japonais sélectionné.
+Furiganizer is a free, open-source Google Docs add-on that adds
+furigana in parentheses to selected Japanese text.
 
-## Gratuité
+## Free to Use
 
-Le module est fourni gratuitement, sans compte, sans abonnement et sans achat intégré.
+The add-on is provided free of charge, with no account, subscription, or in-app purchases.
 
-## Absence de garantie
+## No Warranty
 
-Le module est fourni **« en l'état », sans aucune garantie**, expresse ou implicite, y compris
-de qualité marchande ou d'adéquation à un usage particulier.
+The add-on is provided **"as is," without any warranty**, express or implied, including
+merchantability or fitness for a particular purpose.
 
-En particulier, et sans que cette liste soit limitative :
+In particular, and without limiting the foregoing:
 
-- **les lectures peuvent être erronées.** L'analyse morphologique se trompe sur certains mots,
-  notamment les noms propres et les lectures ambiguës. Ne considère pas le résultat comme une
-  référence — relis-le, surtout pour un usage pédagogique ;
-- **la mise en forme du texte annoté est perdue** (gras, couleurs, liens…) ;
-- le module dépend d'un service tiers qui peut être indisponible ou disparaître ;
-- voir `LIMITATIONS.md` pour le détail.
+- **readings may be incorrect.** Morphological analysis fails on certain words,
+  especially proper nouns and ambiguous readings. Do not treat the result as authoritative —
+  review it carefully, especially for educational use;
+- **formatting of annotated text is lost** (bold, colors, links, etc.);
+- the add-on depends on a third-party service that may become unavailable or disappear;
+- see `LIMITATIONS.md` for details.
 
-Sauvegarde ton document avant utilisation ; l'historique des versions de Google Docs permet
-d'annuler une annotation.
+Save your document before use; Google Docs version history allows
+you to undo an annotation.
 
-## Responsabilité
+## Liability
 
-L'auteur ne peut être tenu responsable d'aucun dommage, direct ou indirect, résultant de
-l'utilisation du module — y compris la perte ou l'altération de contenu d'un document.
+The author is not responsible for any damages, direct or indirect, resulting from
+the use of the add-on — including loss or alteration of document content.
 
-## Données
+## Data
 
-Le traitement des données est décrit dans la [politique de confidentialité](PRIVACY.md).
-Le texte sélectionné est envoyé à une API tierce : n'utilise pas le module sur du texte
-confidentiel.
+Data processing is described in the [Privacy Policy](PRIVACY.md).
+Selected text is sent to a third-party API: do not use the add-on on confidential text.
 
-## Usage acceptable
+## Acceptable Use
 
-Tu t'engages à ne pas utiliser le module pour contourner les limites techniques de Google Docs
-ou de l'API tierce, ni pour en automatiser l'usage à un volume abusif.
+You agree not to use the add-on to circumvent the technical limitations of Google Docs
+or the third-party API, nor to automate its use at abusive volumes.
 
-## Évolutions
+## Changes
 
-Ces conditions peuvent être modifiées ; la version en vigueur est celle publiée sur le dépôt.
-Le module peut être modifié ou retiré à tout moment.
+These terms may be modified; the version in effect is the one published on the repository.
+The add-on may be modified or removed at any time.
 
-## Licence
+## License
 
-Le code source est disponible sur le dépôt du projet et régi par sa licence.
+The source code is available on the project repository and governed by its license.

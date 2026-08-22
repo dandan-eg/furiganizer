@@ -1,39 +1,39 @@
 ---
 layout: default
-title: Limites connues
+title: Known Limitations
 ---
 
-# Limitations connues
+# Known Limitations
 
-## Dépendance à un service tiers
+## Third-Party Service Dependency
 
-Le script appelle [Mikann API](https://github.com/NoHeartPen/fast-mikann-api) (`https://fast-mikann-api.vercel.app/ruby/`), un analyseur Sudachi hébergé sur Vercel.
+The script calls [Mikann API](https://github.com/NoHeartPen/fast-mikann-api) (`https://fast-mikann-api.vercel.app/ruby/`), a Sudachi analyzer hosted on Vercel.
 
-- **Pas de clé d'API** — c'est ce qui rend le script partageable tel quel.
-- **Aucune garantie de pérennité** : projet personnel, pas de SLA, pas de quota documenté. S'il disparaît, changer `FURIGANA_ENDPOINT` (autre piste : [Yomi API](https://github.com/ookii-tsuki/yomi), sans clé mais découpage plus fin — voir ci-dessous ; ou l'API ルビ振り de Yahoo! JAPAN, qui demande un Client ID).
-- **Confidentialité** : le texte sélectionné part sur un serveur tiers. À éviter pour du contenu sensible.
-- **La phrase voyage dans l'URL** (`/ruby/<phrase>`), pas dans un corps de requête. Conséquences : un `/` dans le texte provoquerait un 404 — le script découpe donc sur `/` et fait plusieurs appels — et une sélection très longue peut dépasser la limite de longueur d'URL. Aucune limite de taille n'est documentée : pour de longs passages, procéder paragraphe par paragraphe.
+- **No API key** — this is what makes the script shareable as-is.
+- **No guarantee of permanence**: personal project, no SLA, no documented quota. If it disappears, change `FURIGANA_ENDPOINT` (alternative: [Yomi API](https://github.com/ookii-tsuki/yomi), no key but finer segmentation — see below; or Yahoo! JAPAN's ルビ振り API, which requires a Client ID).
+- **Privacy**: selected text goes to a third-party server. Avoid on sensitive content.
+- **Text travels in the URL** (`/ruby/<phrase>`), not in the request body. Consequences: a `/` in the text would cause a 404 — the script splits on `/` and makes multiple calls — and very long selections may exceed URL length limits. No size limit is documented: for long passages, process paragraph by paragraph.
 
-## Qualité de l'analyse
+## Analysis Quality
 
-Sudachi (mode C, unités longues) gère bien les composés — `日本語(にほんご)` et non `日本(にっぽん)語(ご)` — mais reste statistique :
+Sudachi (mode C, long units) handles compounds well — `日本語(にほんご)` not `日本(にっぽん)語(ご)` — but remains statistical:
 
-- **Homographes** : souvent juste (`会議を行(おこな)った` / `駅に行(い)った`), parfois faux — `辛いカレー` sort en `辛(つら)い` au lieu de `辛(から)い`.
-- **Découpage imparfait** : `一日中` → `一(いち)日(にち)中(ちゅう)` au lieu de `一日中(いちにちじゅう)`.
-- **Lectures littéraires** : `私` → `わたくし` plutôt que `わたし`.
-- **Noms propres et prénoms** : lecture plausible mais non garantie (`田中(たなか)健太(けんた)` ici correct, mais rien ne l'assure).
-- **Aucun dictionnaire d'exceptions** : pas de moyen de forcer une lecture. Il faut relire et corriger à la main.
+- **Homographs**: often correct (`会議を行(おこな)った` / `駅に行(い)った`), sometimes wrong — `辛いカレー` produces `辛(つら)い` instead of `辛(から)い`.
+- **Imperfect segmentation**: `一日中` → `一(いち)日(にち)中(ちゅう)` instead of `一日中(いちにちじゅう)`.
+- **Literary readings**: `私` → `わたくし` rather than `わたし`.
+- **Proper nouns and names**: plausible reading but not guaranteed (`田中(たなか)健太(けんた)` is correct here, but nothing assures it).
+- **No exception dictionary**: no way to force a reading. You must review and correct manually.
 
-## Comportement dans le document
+## Behavior in Documents
 
-- **Sélection uniquement** — rien ne se passe sans sélection.
-- **La mise en forme du passage est perdue** : le texte est supprimé puis réinséré, il reprend le style du début de la plage (gras, couleurs, liens partiels disparaissent).
-- Relancer sur un passage déjà annoté est sans danger : `stripFurigana()` retire les `(かな)` existants avant l'analyse, le résultat est identique. En revanche une lecture corrigée à la main sera écrasée.
-- Seuls les éléments texte sont traités. Tableaux, en-têtes/pieds de page, notes, zones de dessin ne sont atteints que si Docs les inclut dans la sélection courante (souvent non).
-- Pas de fonction « retirer les furigana » — Ctrl+Z, ou Rechercher/Remplacer avec `([一-鿿])[(（][ぁ-ゟ]+[)）]` → `$1` (regex activée).
-- Parenthèses ASCII `( )` en sortie : Google Docs n'a pas de balises ruby natives.
+- **Selection only** — nothing happens without a selection.
+- **Formatting of the passage is lost**: text is deleted then reinserted, adopting the style at the start of the range (bold, colors, partial links disappear).
+- Running again on already-annotated text is safe: `stripFurigana()` removes existing `(かな)` before analysis, result is identical. However, manually corrected readings will be overwritten.
+- Only text elements are processed. Tables, headers/footers, comments, drawing areas are only touched if Docs includes them in the current selection (often not).
+- No "remove furigana" function — use Ctrl+Z, or Find/Replace with `([一-鿿])[(（][ぁ-ゟ]+[)）]` → `$1` (regex enabled).
+- ASCII parentheses `( )` in output: Google Docs has no native ruby tags.
 
-## Quotas Apps Script
+## Apps Script Quotas
 
-- `UrlFetchApp` : 20 000 appels/jour (compte gratuit) ; 1 appel par exécution du menu (plus si le texte contient des `/`).
-- Exécution limitée à 6 minutes — sans objet pour une sélection normale.
+- `UrlFetchApp`: 20,000 calls/day (free account); 1 call per menu execution (more if text contains `/`).
+- Execution limited to 6 minutes — not an issue for normal selections.

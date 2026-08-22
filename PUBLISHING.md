@@ -1,103 +1,103 @@
-# Publier Furiganizer sur le Google Workspace Marketplace
+# Publishing Furiganizer on Google Workspace Marketplace
 
-Objectif : un add-on Docs public, installable par n'importe qui (dont ta prof) depuis
-**Extensions > Modules complémentaires > Télécharger des modules complémentaires**.
+Goal: a public Docs add-on, installable by anyone (including your teacher) from
+**Extensions > Add-ons > Get add-ons**.
 
-Tout ce qui suit se fait à la main dans la console Google Cloud + l'éditeur Apps Script.
-Le code du dépôt est déjà prêt (`onInstall`, `createAddonMenu`, gestion d'erreur, `urlFetchWhitelist`).
+Everything below is done manually in the Google Cloud console + Apps Script editor.
+The repository code is already prepared (`onInstall`, `createAddonMenu`, error handling, `urlFetchWhitelist`).
 
-## 1. Projet Google Cloud
+## 1. Google Cloud Project
 
-1. [console.cloud.google.com](https://console.cloud.google.com) → nouveau projet, nom `Furiganizer`.
-2. **APIs & Services > Bibliothèque** → activer **Google Workspace Marketplace SDK**.
-3. Dans Apps Script : **Paramètres du projet > Projet Google Cloud > Changer de projet**,
-   coller le **numéro** du projet (pas l'ID). Le script doit être rattaché à *ton* projet Cloud,
-   sinon la publication est impossible.
+1. [console.cloud.google.com](https://console.cloud.google.com) → create new project named `Furiganizer`.
+2. **APIs & Services > Library** → enable **Google Workspace Marketplace SDK**.
+3. In Apps Script: **Project Settings > Google Cloud Project > Change project**,
+   paste the **project number** (not the ID). The script must be attached to *your* Cloud project,
+   otherwise publishing is impossible.
 
-## 2. Écran de consentement OAuth
+## 2. OAuth Consent Screen
 
-L'ancienne page unique « OAuth consent screen » est devenue **Google Auth Platform**
-(`console.cloud.google.com/auth/overview`), éclatée en sous-pages :
+The old single "OAuth consent screen" page has become **Google Auth Platform**
+(`console.cloud.google.com/auth/overview`), split across multiple pages:
 
-**Branding** (Personnalisation)
+**Branding**
 
-- Nom de l'app : `Furiganizer` (⚠️ pas de « Google » ni de nom de produit Google dedans).
-- E-mail d'assistance, logo.
-- **Domaine autorisé** : à renseigner *avant* que les deux champs suivants apparaissent.
-- Liens **Politique de confidentialité** et **Conditions d'utilisation** → voir `PRIVACY.md` / `TERMS.md`
-  (publie-les via GitHub Pages pour avoir des URL `https://` stables, sur le domaine autorisé).
+- App name: `Furiganizer` (⚠️ no "Google" or other Google product names).
+- Support email, logo.
+- **Authorized domain**: fill this in *before* the following two fields appear.
+- Links to **Privacy Policy** and **Terms of Service** → see `PRIVACY.md` / `TERMS.md`
+  (publish via GitHub Pages to get stable `https://` URLs on the authorized domain).
 
-**Audience** (Public cible)
+**Audience**
 
-- Type d'utilisateur : **Externe**.
-- Utilisateurs de test tant que l'app n'est pas passée en Production.
+- User type: **External**.
+- Test users until the app moves to Production.
 
-**Data Access** (Accès aux données)
+**Data Access**
 
-- Scopes : les trois du manifeste, `documents.currentonly`, `script.container.ui`
-  et `script.external_request`. Pour un add-on Apps Script, ce sont ceux du manifeste qui
-  s'appliquent réellement ; on les déclare ici parce que c'est ce que lit la revue.
-  Ils sont volontairement étroits — c'est ce qui évite la revue de sécurité lourde
-  (pas d'accès à tout le Drive, seulement au document ouvert). Sensibles, mais pas restreints.
+- Scopes: the three from the manifest, `documents.currentonly`, `script.container.ui`
+  and `script.external_request`. For an Apps Script add-on, the manifest scopes are what
+  actually apply; we declare them here because that's what the review reads.
+  They are deliberately narrow — this avoids heavy security review
+  (no access to all of Drive, only the open document). Sensitive, but not restricted.
 
-**Verification Center** (Centre de validation)
+**Verification Center**
 
-- **Vérification de la marque** (logo + domaine) : compte quelques jours.
+- **Brand verification** (logo + domain): takes a few days.
 
-## 3. Déploiement versionné
+## 3. Versioned Deployment
 
-Dans l'éditeur Apps Script : **Déployer > Nouveau déploiement > Module complémentaire**.
-Note le **numéro de déploiement** — c'est lui que demande le SDK Marketplace.
-Chaque mise à jour publiée = nouveau déploiement + mise à jour de la fiche.
+In the Apps Script editor: **Deploy > New deployment > Add-on**.
+Note the **deployment number** — this is what the Marketplace SDK asks for.
+Each published update = new deployment + store listing update.
 
 ## 4. Marketplace SDK
 
-**APIs & Services > Google Workspace Marketplace SDK > Configuration de l'app** :
+**APIs & Services > Google Workspace Marketplace SDK > App configuration**:
 
-- Visibilité : **Public**.
-- Installation : **Utilisateur individuel + Administrateur** (sinon seuls les admins de domaine
-  peuvent installer, ce qui bloquerait un compte Gmail perso).
-- Intégrations : **Module complémentaire Docs**, avec le script ID et le numéro de déploiement.
-- Scopes : identiques au manifeste, au caractère près.
+- Visibility: **Public**.
+- Installation: **Individual users + Administrator** (otherwise only domain admins
+  can install, which would block personal Gmail accounts).
+- Integrations: **Docs add-on**, with the script ID and deployment number.
+- Scopes: identical to the manifest, character for character.
 
-## 5. Fiche du store
+## 5. Store Listing
 
-Onglet **Store listing**. Assets à préparer :
+**Store listing** tab. Assets to prepare:
 
-| Élément | Contrainte |
+| Item | Constraint |
 |---|---|
-| Nom | 50 caractères max |
-| Description courte | 200 caractères max |
-| Description longue | 16 000 caractères max |
-| Icône | PNG **32×32** et **128×128** |
-| Bannière de carte | **220×140** |
-| Captures d'écran | 1 à 10, **1280×800** recommandé (640×400 ou 2560×1600 acceptés), plein cadre, sans marge |
-| URL | politique de confidentialité, conditions d'utilisation, support |
-| Catégorie + langue | à choisir (japonais/français) |
+| Name | 50 characters max |
+| Short description | 200 characters max |
+| Long description | 16,000 characters max |
+| Icon | PNG **32×32** and **128×128** |
+| Card banner | **220×140** |
+| Screenshots | 1 to 10, **1280×800** recommended (640×400 or 2560×1600 accepted), full frame, no margins |
+| URL | privacy policy, terms of service, support |
+| Category + language | choose (Japanese/English) |
 
-Au moins une capture doit montrer l'add-on **en action dans Google Docs** (menu Extensions visible
-+ avant/après sur une phrase) : c'est un critère de revue explicite.
+At least one screenshot must show the add-on **in action in Google Docs** (Extensions menu visible
++ before/after on a sentence): this is an explicit review criterion.
 
-## 6. Soumission
+## 6. Submission
 
-**Publier > Soumettre pour examen**. Google review la fiche *et* le comportement de l'app.
-Compter quelques jours à quelques semaines. Motifs de rejet fréquents ici :
+**Publish > Submit for review**. Google reviews both the listing *and* the app behavior.
+Expect a few days to a few weeks. Common rejection reasons:
 
-- captures qui ne montrent pas l'intégration Docs ;
-- description qui ne dit pas clairement ce que fait l'app ;
-- politique de confidentialité qui ne mentionne pas l'envoi de données à un tiers.
+- screenshots that don't show Docs integration;
+- description that doesn't clearly explain what the app does;
+- privacy policy that doesn't mention sending data to a third party.
 
-## Point de vigilance : la dépendance à Mikann
+## Important Note: Dependency on Mikann
 
-L'add-on envoie le texte sélectionné à `fast-mikann-api.vercel.app`, une instance publique
-que tu ne contrôles pas. Conséquences une fois public :
+The add-on sends selected text to `fast-mikann-api.vercel.app`, a public instance
+you don't control. Consequences once public:
 
-- si elle tombe ou change d'URL, l'add-on est cassé pour **tous** les utilisateurs, et tu devras
-  republier une version (donc repasser par une revue) ;
-- tu dois le déclarer dans la politique de confidentialité (c'est fait dans `PRIVACY.md`).
+- if it goes down or changes URL, the add-on breaks for **all** users, and you'll need
+  to republish a version (going through review again);
+- you must declare this in the privacy policy (done in `PRIVACY.md`).
 
-Ça reste publiable tel quel. Mais si l'add-on prend, héberger ton propre service devient la
-première chose à faire — il suffira alors de changer `FURIGANA_ENDPOINT` et `urlFetchWhitelist`.
+It's still publishable as-is. But if the add-on gains traction, hosting your own service becomes the
+first priority — you'd just need to change `FURIGANA_ENDPOINT` and `urlFetchWhitelist`.
 
-Voir aussi `LIMITATIONS.md` : les lectures parfois fausses et la perte de mise en forme
-méritent d'être mentionnées dans la description du store, pas découvertes par l'utilisateur.
+See also `LIMITATIONS.md`: occasional incorrect readings and formatting loss
+deserve mention in the store description, not discovery by the user.

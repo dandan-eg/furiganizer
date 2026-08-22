@@ -5,41 +5,41 @@ title: Furiganizer
 
 # Furiganizer
 
-Script Google Apps Script (Google Docs) qui ajoute les furigana entre parenthèses sur **la sélection** :
+Google Apps Script (Google Docs) add-on that adds furigana in parentheses to **selected text**:
 
 ```
 昨日映画を見ました  →  昨日（きのう）映画（えいが）を見（み）ました
 ```
 
-## Installation (add-on, disponible sur tous tes documents)
+## Installation (add-on, available on all your documents)
 
-1. Ouvre **un** Google Doc (il servira de projet de développement) → **Extensions > Apps Script**.
-2. Renomme le projet **Furiganizer** (c'est ce nom qui s'affichera dans le menu Extensions).
-3. Colle le contenu de `Code.gs` dans l'éditeur.
-4. **Paramètres du projet > Afficher le fichier manifeste `appsscript.json`**, puis remplace-le par celui du dépôt.
-5. **Déployer > Tester les déploiements** → *Sélectionner le type : module complémentaire Docs* → **Installer**.
-6. Ouvre n'importe quel Google Doc : **Extensions > Furiganizer > ふりがなを付ける**.
+1. Open **a** Google Doc (it will serve as your development project) → **Extensions > Apps Script**.
+2. Rename the project **Furiganizer** (this name will appear in the Extensions menu).
+3. Paste the content of `Code.gs` into the editor.
+4. **Project Settings > Show manifest file `appsscript.json`**, then replace it with the one from the repository.
+5. **Deploy > Test deployments** → *Select type: Docs add-on* → **Install**.
+6. Open any Google Doc: **Extensions > Furiganizer > ふりがなを付ける**.
 
-Le déploiement de test reste installé sur ton compte : pas besoin de validation Google, et le menu suit tous tes documents.
+The test deployment stays installed on your account: no Google validation needed, and the menu follows all your documents.
 
-Aucune clé d'API.
+No API key required.
 
-## Publication (pour tout le monde)
+## Publishing (for everyone)
 
-Le déploiement de test ci-dessus ne vaut que pour ton compte. Pour que n'importe qui puisse
-installer Furiganizer depuis le Google Workspace Marketplace, voir **[PUBLISHING.md](PUBLISHING.md)** :
-projet Cloud, écran de consentement OAuth, fiche du store, soumission à la revue Google.
+The test deployment above only works for your account. For anyone to be able to
+install Furiganizer from the Google Workspace Marketplace, see **[PUBLISHING.md](PUBLISHING.md)**:
+Cloud project, OAuth consent screen, store listing, Google review submission.
 
-Documents requis par la revue, déjà rédigés : [PRIVACY.md](PRIVACY.md) et [TERMS.md](TERMS.md)
-(à publier sous des URL `https://` stables, par ex. via GitHub Pages).
+Required review documents, already written: [PRIVACY.md](PRIVACY.md) and [TERMS.md](TERMS.md)
+(publish at stable `https://` URLs, e.g., via GitHub Pages).
 
-## Utilisation
+## Usage
 
-Sélectionne du texte, puis **Extensions > Furiganizer > ふりがなを付ける**.
+Select text, then **Extensions > Furiganizer > ふりがなを付ける**.
 
 ## Notes
 
-- Back-end : [Mikann API](https://github.com/NoHeartPen/fast-mikann-api) (Sudachi, mode C), gratuit et sans clé.
-- L'analyse morphologique est indispensable : 昨日 = きのう et non さくじつ, 見ました → 見(み)ました, 日本語 = にほんご en un seul bloc.
-- Les okurigana restent hors des parenthèses : 食べて → 食(た)べて, 走って → 走(はし)って.
-- Lectures parfois fausses, mise en forme perdue, ne pas relancer deux fois : voir [LIMITATIONS.md](LIMITATIONS.md) avant de partager le script.
+- Back-end: [Mikann API](https://github.com/NoHeartPen/fast-mikann-api) (Sudachi, mode C), free and no key required.
+- Morphological analysis is essential: 昨日 = きのう not さくじつ, 見ました → 見(み)ました, 日本語 = にほんご as one unit.
+- Okurigana stay outside parentheses: 食べて → 食(た)べて, 走って → 走(はし)って.
+- Readings sometimes incorrect, formatting lost, don't run twice: see [LIMITATIONS.md](LIMITATIONS.md) before sharing the script.
